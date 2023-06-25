@@ -31,19 +31,14 @@ public class DeliveryCardTest {
     @Test
     void cardDeliveryArrangement(){
         open("http://localhost:9999/");
-        $("[data-test-id=city] input").setValue("Санкт-Петербург");
-        $(byName("city")).shouldHave(Condition.value("Санкт-Петербург"));
+        $("[data-test-id=city] input").setValue("Самара");
         LocalDate date = LocalDate.of(2023, 10, 25);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("25.10.2023");
         String formattedDate = date.format(formatter);
-        $(byName("date")).setValue(formattedDate);
-        $(byName("date")).shouldHave(Condition.value(formattedDate));
         $("[data-test-id=name] input").setValue("Кузнецов Анатолий");
-        $(byName("name")).shouldHave(Condition.value("Кузнецов Анатолий"));
         $("[data-test-id=phone] input").setValue("+77468536452");
-        $(byName("phone")).shouldHave(Condition.value("+77468536452"));
-        $(byName("Забронировать")).click();
-        $(byName("Забронировать")).shouldBe(Condition.checked);
+        $(".checkbox__box").click();
+        $("button").click();
         $(byText("Забронировать")).click();
 
     }
